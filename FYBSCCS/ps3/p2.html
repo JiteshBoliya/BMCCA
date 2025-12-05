@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>jQuery Animate Example</title>
+
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <style>
+        #box {
+            width: 100px;
+            height: 100px;
+            background: blue;
+            position: relative;
+            opacity: 0.4;
+        }
+    </style>
+</head>
+<body style="padding: 20px; font-family: Arial;">
+    
+    <h1>Question 2</h1>
+
+    <h2>Animate a Square using jQuery</h2>
+
+    <div id="box"></div><br>
+
+    <button id="animateBtn">Animate Box</button>
+
+    <script>
+        $(document).ready(function(){
+            $("#animateBtn").click(function(){
+                $("#box").animate({
+                    left: "200px",      // move right
+                    width: "300px",     // increase width
+                    opacity: 1          // increase opacity
+                }, 1000); // animation duration 1 second
+            });
+        });
+    </script>
+
+</body>
+</html>

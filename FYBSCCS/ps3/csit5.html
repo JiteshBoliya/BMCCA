@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mouseover Color Change</title>
+
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <style>
+        #myBox {
+            width: 200px;
+            height: 200px;
+            background-color: lightgray;
+            border: 2px solid black;
+            margin: 50px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Question 5</h1>
+    
+    <div id="myBox"></div>
+
+    <script>
+        $(document).ready(function(){
+
+            $("#myBox").mouseover(function(){
+                $(this).css("background-color", "yellow");
+            });
+
+            $("#myBox").mouseout(function(){
+                $(this).css("background-color", "lightgray");
+            });
+
+        });
+    </script>
+
+</body>
+</html>

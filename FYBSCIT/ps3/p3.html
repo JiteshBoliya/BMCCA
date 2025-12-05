@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bootstrap Form Events</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        .active-field {
+            background-color: #ffff99; /* highlight active field */
+        }
+        .display {
+            font-weight: bold;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body class="p-4">
+
+<div class="container">
+    <h2 class="mb-4 text-center">Bootstrap Form Events Example</h2>
+
+    <form id="myForm">
+        <!-- Name Field -->
+        <div class="mb-3">
+            <label for="name" class="form-label">Name:</label>
+            <input type="text" class="form-control" id="name" placeholder="Enter name">
+            <div id="liveName" class="display text-primary"></div>
+            <div id="changeName" class="display text-success"></div>
+        </div>
+
+        <!-- Email Field -->
+        <div class="mb-3">
+            <label for="email" class="form-label">Email:</label>
+            <input type="email" class="form-control" id="email" placeholder="Enter email">
+            <div id="liveEmail" class="display text-primary"></div>
+            <div id="changeEmail" class="display text-success"></div>
+        </div>
+
+        <!-- Age Field -->
+        <div class="mb-3">
+            <label for="age" class="form-label">Age:</label>
+            <input type="number" class="form-control" id="age" placeholder="Enter age">
+            <div id="liveAge" class="display text-primary"></div>
+            <div id="changeAge" class="display text-success"></div>
+        </div>
+    </form>
+</div>
+
+<script>
+    // Select all input fields in the form
+    // querySelectorAll returns a NodeList of all matching elements
+    const inputs = document.querySelectorAll("#myForm input");
+
+    inputs.forEach(input => {
+        // Highlight field on focus
+        //  addEventListener attaches an event handler to the specified event
+        input.addEventListener("focus", function() {
+            // add "active-field" class to the focused input
+            this.classList.add("active-field");
+        });
+
+        // Remove highlight on blur
+        input.addEventListener("blur", function() {
+            this.classList.remove("active-field");
+        });
+
+        // Live typing display
+        input.addEventListener("keyup", function() {
+            // charAt(0).toUpperCase() capitalizes the first letter of the id
+            const liveDiv = document.getElementById("live" + this.id.charAt(0).toUpperCase() + this.id.slice(1));
+            liveDiv.textContent = "Live: " + this.value;
+        });
+
+        // Display message on change
+        input.addEventListener("change", function() {
+            // slice(1) gets the rest of the id string after the first character
+            const changeDiv = document.getElementById("change" + this.id.charAt(0).toUpperCase() + this.id.slice(1));
+            changeDiv.textContent = "Changed: " + this.value;
+        });
+    });
+</script>
+
+</body>
+</html>

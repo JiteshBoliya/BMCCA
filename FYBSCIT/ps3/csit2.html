@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>jQuery :contains() Example</title>
+
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body style="font-family: Arial; padding: 20px;">
+
+    <h1>Question 2</h1>
+    
+    <h2>Change Color of Paragraph Containing "Hello"</h2>
+
+    <p>Welcome to jQuery tutorial.</p>
+    <p>Hello world! This paragraph contains the word Hello.</p>
+    <p>This is another paragraph.</p>
+
+    <button id="changeBtn">Find & Change Color</button>
+
+    <script>
+        $(document).ready(function () {
+            $("#changeBtn").click(function () {
+                $("p:contains('Hello')").css("color", "red");
+            });
+        });
+    </script>
+
+</body>
+</html>

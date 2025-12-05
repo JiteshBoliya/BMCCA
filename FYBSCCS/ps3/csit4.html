@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Form Submit Without Refresh</title>
+
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body style="font-family: Arial; padding: 20px;">
+
+    <h1>Question 4</h1>
+    
+    <h2>Submit Form Without Refresh</h2>
+
+    <form id="myForm">
+        <label>Enter your name:</label><br>
+        <input type="text" id="nameInput" class="form-control" required>
+        <br>
+        <button type="submit" id="submitBtn">Submit</button>
+    </form>
+
+    <h3 id="result" style="margin-top: 20px;"></h3>
+
+    <script>
+        $(document).ready(function () {
+
+            $("#myForm").submit(function (event) {
+
+                event.preventDefault();  // Stop form from refreshing the page
+
+                let name = $("#nameInput").val(); // Get input value
+
+                $("#result").text("You entered: " + name); // Print value
+
+            });
+
+        });
+    </script>
+
+</body>
+</html>

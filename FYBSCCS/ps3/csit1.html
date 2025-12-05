@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Change Paragraph Background</title>
+
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+</head>
+<body style="font-family: Arial; padding: 20px;">
+
+    <h1>Question 1</h1>
+
+    <h2>Change All Paragraph Backgrounds</h2>
+
+    <p>Paragraph 1</p>
+    <p>Paragraph 2</p>
+    <p>This is another paragraph.</p>
+
+    <button id="changeBtn">Change Background</button>
+
+    <script>
+        $(document).ready(function () {
+
+            $("#changeBtn").click(function () {
+                $("p").css("background", "yellow");
+            });
+
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!-- XML is used to store and transport data between client and server. -->
+
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Students>
+
+    <Student>
+        <RollNo>101</RollNo>
+        <Name>Rahul Sharma</Name>
+        <Age>20</Age>
+        <Course>BCA</Course>
+    </Student>
+
+    <Student>
+        <RollNo>102</RollNo>
+        <Name>Priya Mehta</Name>
+        <Age>21</Age>
+        <Course>BSc IT</Course>
+    </Student>
+
+    <Student>
+        <RollNo>103</RollNo>
+        <Name>Amit Verma</Name>
+        <Age>19</Age>
+        <Course>BCS</Course>
+    </Student>
+
+    <Student>
+        <RollNo>104</RollNo>
+        <Name>Sneha Patil</Name>
+        <Age>20</Age>
+        <Course>BBA</Course>
+    </Student>
+
+</Students>

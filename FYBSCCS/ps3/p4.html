@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>jQuery Chaining Example</title>
+
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <style>
+        #box {
+            width: 200px;
+            height: 100px;
+            background: lightblue;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body style="font-family: Arial; padding: 20px;">
+
+    <h1>Question 4</h1>
+
+    <h2>jQuery Chaining</h2>
+
+    <div id="box"></div><br>
+
+    <button id="animateBtn">Start Animation</button>
+
+    <script>
+        $(document).ready(function () {
+            $("#animateBtn").click(function () {
+
+                $("#box")
+                    .css("background", "orange")   // change color
+                    .slideUp(1000)                 // slide up
+                    .slideDown(1000);              // slide down
+
+            });
+        });
+    </script>
+
+</body>
+</html>

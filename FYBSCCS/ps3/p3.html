@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fading Image Slideshow</title>
+
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <style>
+        #slideshow img {
+            width: 400px;
+            height: 250px;
+            display: none;  /* hide all images initially */
+        }
+    </style>
+</head>
+
+<body style="padding: 20px; font-family: Arial;">
+
+    <h1>Question 3</h1>
+    
+    <h2>Fading Image Slideshow</h2>
+
+    <div id="slideshow">
+        <img src="../../FYBSCIT/ps2/p20/images/img1.jpg" alt="Image 1">
+        <img src="../../FYBSCIT/ps2/p20/images/img2.jpg" alt="Image 2">
+        <img src="../../FYBSCIT/ps2/p20/images/img3.jpg" alt="Image 3">
+        <img src="../../FYBSCIT/ps2/p20/images/img4.jpg" alt="Image 4">
+    </div>
+
+    <script>
+        $(document).ready(function () {
+
+            let current = 0;
+            let images = $("#slideshow img");
+            let total = images.length;
+
+            function showNextImage() {
+                // Fade out current image
+                $(images[current]).fadeOut(800, function () {
+
+                    // Move to next image
+                    current = (current + 1) % total;
+
+                    // Fade in next image
+                    $(images[current]).fadeIn(800, function () {
+                        setTimeout(showNextImage, 1500); // pause before next fade
+                    });
+
+                });
+            }
+
+            // Start slideshow
+            $(images[0]).fadeIn(800, function () {
+                setTimeout(showNextImage, 1500);
+            });
+
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hide and Show Example</title>
+
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+</head>
+<body style="font-family: Arial; padding: 20px;">
+
+    <h1>Question 1</h1>
+
+    <h2>Hide & Show Paragraph using jQuery</h2>
+
+    <p id="myPara">This is a sample paragraph that will be hidden and shown using jQuery.</p>
+
+    <button id="hideBtn">Hide Paragraph</button>
+    <button id="showBtn">Show Paragraph</button>
+
+    <script>
+        $(document).ready(function(){
+
+            // Hide the paragraph
+            $("#hideBtn").click(function(){
+                $("#myPara").hide();
+            });
+
+            // Show the paragraph
+            $("#showBtn").click(function(){
+                $("#myPara").show();
+            });
+
+        });
+    </script>
+
+</body>
+</html>

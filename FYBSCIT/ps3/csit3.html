@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Image Hover Change</title>
+
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+</head>
+<body style="padding: 20px; font-family: Arial;">
+
+    <h1>Question 3</h1>
+
+    <h2>Change Image on Hover</h2>
+
+    <img id="myImg" src="../../FYBSCIT/ps2/p20/images/img1.jpg" width="300" alt="Image">
+
+    <script>
+        $(document).ready(function () {
+
+            $("#myImg").mouseenter(function () {
+                $(this).attr("src", "../../FYBSCIT/ps2/p20/images/img2.jpg"); // new image
+            });
+
+            $("#myImg").mouseleave(function () {
+                $(this).attr("src", "../../FYBSCIT/ps2/p20/images/img1.jpg"); // original image
+            });
+
+        });
+    </script>
+
+</body>
+</html>

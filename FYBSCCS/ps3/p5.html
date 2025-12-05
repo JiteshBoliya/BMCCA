@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Slide Down & Hide Example</title>
+
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <style>
+        #box {
+            width: 250px;
+            height: 120px;
+            background: skyblue;
+            display: none; /* hidden initially */
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body style="font-family: Arial; padding: 20px;">
+
+    <h1>Question 5</h1>
+    
+    <h2>Click to Slide Down, Double-Click to Hide</h2>
+
+    <button id="toggleBtn">Click Me</button>
+
+    <div id="box"></div>
+
+    <script>
+        $(document).ready(function () {
+
+            // Single click → Slide Down
+            $("#toggleBtn").click(function () {
+                $("#box").slideDown();
+            });
+
+            // Double-click → Hide
+            $("#toggleBtn").dblclick(function () {
+                $("#box").slideUp(); // or .hide()
+            });
+
+        });
+    </script>
+
+</body>
+</html>
