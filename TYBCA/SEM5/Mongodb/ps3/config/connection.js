@@ -3,10 +3,7 @@ const mongoose = require("mongoose");
 const connectDB = async () => {
   const MONGO_URI = "mongodb://127.0.0.1:27017/bmccaDb";
   try {
-    await mongoose.connect(MONGO_URI, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
+    await mongoose.connect(MONGO_URI);
     console.log("MongoDB connected: bmccaDb");
   } catch (err) {
     console.error("Database connection failed:", err.message);
@@ -14,4 +11,5 @@ const connectDB = async () => {
   }
 };
 
-module.exports = connectDB;
+connectDB();
+// module.exports = connectDB;
