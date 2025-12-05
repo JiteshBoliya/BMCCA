@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Question 9</h1> 
+    <button id="disableBtn" onclick="disableButton()">Disable Me for 5 sec</button>   
+</body>
+    <script>
+        function disableButton() {
+            // get the button element by its ID
+            const btn = document.getElementById("disableBtn");
+            btn.disabled = true;
+            // set a timer to re-enable the button after 5 seconds (5000 milliseconds)
+            setTimeout(() => btn.disabled = false, 5000);
+        }
+    </script>
+</html>

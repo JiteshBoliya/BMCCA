@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Question 13</h1> 
+</body>
+    <script>
+        let str = prompt("Enter string:");
+        // Capitalize first letter of each word
+        // /\b\w/g matches first letter of each word
+        let result = str.toLowerCase().replace(/\b\w/g, c => c.toUpperCase());
+        alert(result);
+    </script>
+</html>
