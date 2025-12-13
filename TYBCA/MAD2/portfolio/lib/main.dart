@@ -55,6 +55,51 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
+  Widget _experienceCard(String title, String company, String period, String desc) {
+    return FractionallySizedBox(
+      widthFactor: 0.9,
+      child: Card(
+        color: Colors.white10,
+        margin: const EdgeInsets.symmetric(vertical: 8.0),
+        child: Padding(
+          padding: const EdgeInsets.all(12.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                title,
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: 'monospace',
+                  fontSize: 18,
+                ),
+              ),
+              const SizedBox(height: 4),
+              Text(
+                '$company • $period',
+                style: const TextStyle(
+                  color: Colors.white70,
+                  fontFamily: 'monospace',
+                  fontSize: 13,
+                ),
+              ),
+              const SizedBox(height: 8),
+              Text(
+                desc,
+                style: const TextStyle(
+                  color: Colors.white70,
+                  fontFamily: 'monospace',
+                  fontSize: 14,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -88,7 +133,7 @@ class _HomePageState extends State<HomePage> {
             ],
           ),
 
-          // Second page with circular image above text
+          // Second page with circular image above text and scrollable experience
           Container(
             decoration: const BoxDecoration(
               gradient: LinearGradient(
@@ -97,25 +142,58 @@ class _HomePageState extends State<HomePage> {
                 end: Alignment.bottomCenter,
               ),
             ),
-            child: Center(
+            child: SingleChildScrollView(
+              padding: const EdgeInsets.symmetric(vertical: 48.0, horizontal: 20.0),
               child: Column(
-                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   CircleAvatar(
                     radius: 60,
-                    // https://i.pravatar.cc/300
-                    backgroundImage: AssetImage('../assets/profile.jpeg'),
-                    // backgroundColor: Colors.white12,
+                    backgroundImage: const AssetImage('../assets/profile.jpeg'),
                   ),
                   const SizedBox(height: 18),
                   const Text(
-                    "I'm jitesh boliya",
+                    "I'm Eva Smith",
                     style: TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.bold,
                       fontFamily: 'monospace',
                       fontSize: 28,
                     ),
+                  ),
+                  const SizedBox(height: 28),
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      'Work Experience',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: 'monospace',
+                        fontSize: 20,
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 12),
+
+                  // Demo experiences
+                  _experienceCard(
+                    'Frontend Developer',
+                    'Company A',
+                    '2022 — 2023',
+                    'Built responsive web interfaces and improved performance by 30%.',
+                  ),
+                  _experienceCard(
+                    'Mobile Developer',
+                    'Company B',
+                    '2020 — 2022',
+                    'Developed cross-platform Flutter apps and maintained CI/CD pipelines.',
+                  ),
+                  _experienceCard(
+                    'Software Intern',
+                    'Company C',
+                    '2019',
+                    'Assisted with testing, bug fixes, and documentation.',
                   ),
                 ],
               ),
