@@ -88,8 +88,39 @@ class _HomePageState extends State<HomePage> {
             ],
           ),
 
-          // Second page
-          _buildPage("I'm jitesh boliya"),
+          // Second page with circular image above text
+          Container(
+            decoration: const BoxDecoration(
+              gradient: LinearGradient(
+                colors: [Color.fromARGB(255, 6, 77, 99), Color.fromARGB(255, 144, 177, 185)],
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+              ),
+            ),
+            child: Center(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  CircleAvatar(
+                    radius: 60,
+                    // https://i.pravatar.cc/300
+                    backgroundImage: AssetImage('../assets/profile.jpeg'),
+                    // backgroundColor: Colors.white12,
+                  ),
+                  const SizedBox(height: 18),
+                  const Text(
+                    "I'm jitesh boliya",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontFamily: 'monospace',
+                      fontSize: 28,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
         ],
       ),
     );
