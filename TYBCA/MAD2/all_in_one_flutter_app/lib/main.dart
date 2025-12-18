@@ -18,7 +18,11 @@ class LayoutGalleryApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(primarySwatch: Colors.indigo, useMaterial3: true),
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+        useMaterial3: true,
+        fontFamily: 'Pacifico',
+      ),
       home: const LayoutGridScreen(),
     );
   }
@@ -63,115 +67,138 @@ class LayoutGridScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBodyBehindAppBar: true,
       appBar: AppBar(
-        title: const Text('Flutter'),
-        centerTitle: true,
+        leading: const Padding(
+          padding: EdgeInsets.all(6.0),
+          child: FlutterLogo(),
+        ),
+        title: const Text('Flutter', style: TextStyle(color: Colors.white)),
+        // centerTitle: true,
+        elevation: 10,
+        backgroundColor: Colors.lightBlue[700],
       ),
-      body: ListView(
-        padding: const EdgeInsets.all(12.0),
+      body: Container(
+        padding: EdgeInsets.fromLTRB(0, 50, 0, 0),
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+            colors: [Color.fromARGB(255, 154, 207, 250), Color(0xFF42A5F5)],
+          ),
+        ),
+        child: ListView(
+        padding: const EdgeInsets.all(10.0),
         children: [
           // Section 1: Layouts
-          const Padding(
-            padding: EdgeInsets.symmetric(vertical: 8.0),
-            child: Text('Layouts', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-          ),
-          GridView.builder(
-            shrinkWrap: true,
-            physics: const NeverScrollableScrollPhysics(),
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 4,
-              crossAxisSpacing: 12,
-              mainAxisSpacing: 12,
-              childAspectRatio: 1.1,
-            ),
-            itemCount: layouts.length,
-            itemBuilder: (context, index) {
-              final layout = layouts[index];
-              return LayoutCard(
-                name: layout['name'],
-                icon: layout['icon'],
-                color: layout['color'],
-                onTap: () {
-                  switch (index) {
-                    case 0:
-                      Navigator.push(context, MaterialPageRoute(builder: (_) => const ContainerScreen()));
-                      break;
-                    case 1:
-                      Navigator.push(context, MaterialPageRoute(builder: (_) => const RowColumnScreen()));
-                      break;
-                    case 2:
-                      Navigator.push(context, MaterialPageRoute(builder: (_) => const StackScreen()));
-                      break;
-                    case 3:
-                      Navigator.push(context, MaterialPageRoute(builder: (_) => const ListViewScreen()));
-                      break;
-                    case 4:
-                      Navigator.push(context, MaterialPageRoute(builder: (_) => const GridViewScreen()));
-                      break;
-                    default:
-                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Unknown: ${layout['name']}')));
-                  }
+          SectionCard(
+            title: 'Layouts',
+            child: LayoutBuilder(builder: (context, constraints) {
+              final crossAxis = (constraints.maxWidth ~/ 160).clamp(2, 6);
+              return GridView.builder(
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: crossAxis,
+                  crossAxisSpacing: 12,
+                  mainAxisSpacing: 12,
+                  childAspectRatio: 1,
+                ),
+                itemCount: layouts.length,
+                itemBuilder: (context, index) {
+                  final layout = layouts[index];
+                  return LayoutCard(
+                    name: layout['name'],
+                    icon: layout['icon'],
+                    color: layout['color'],
+                    onTap: () {
+                      switch (index) {
+                        case 0:
+                          Navigator.push(context, MaterialPageRoute(builder: (_) => const ContainerScreen()));
+                          break;
+                        case 1:
+                          Navigator.push(context, MaterialPageRoute(builder: (_) => const RowColumnScreen()));
+                          break;
+                        case 2:
+                          Navigator.push(context, MaterialPageRoute(builder: (_) => const StackScreen()));
+                          break;
+                        case 3:
+                          Navigator.push(context, MaterialPageRoute(builder: (_) => const ListViewScreen()));
+                          break;
+                        case 4:
+                          Navigator.push(context, MaterialPageRoute(builder: (_) => const GridViewScreen()));
+                          break;
+                        default:
+                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Unknown: ${layout['name']}')));
+                      }
+                    },
+                  );
                 },
               );
-            },
+            }),
           ),
 
           const SizedBox(height: 20),
 
           // Section 2: Display widgets
-          const Padding(
-            padding: EdgeInsets.symmetric(vertical: 8.0),
-            child: Text('Display Widgets', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-          ),
-          GridView.builder(
-            shrinkWrap: true,
-            physics: const NeverScrollableScrollPhysics(),
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 4,
-              crossAxisSpacing: 12,
-              mainAxisSpacing: 12,
-              childAspectRatio: 1.1,
-            ),
-            itemCount: displayWidgets.length,
-            itemBuilder: (context, index) {
-              final item = displayWidgets[index];
-              return LayoutCard(
-                name: item['name'],
-                icon: item['icon'],
-                color: item['color'],
-                onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => DisplayWidgetScreen(title: item['name']))),
+          SectionCard(
+            title: 'Display Widgets',
+            child: LayoutBuilder(builder: (context, constraints) {
+              final crossAxis = (constraints.maxWidth ~/ 160).clamp(2, 6);
+              return GridView.builder(
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: crossAxis,
+                  crossAxisSpacing: 12,
+                  mainAxisSpacing: 12,
+                  childAspectRatio: 1,
+                ),
+                itemCount: displayWidgets.length,
+                itemBuilder: (context, index) {
+                  final item = displayWidgets[index];
+                  return LayoutCard(
+                    name: item['name'],
+                    icon: item['icon'],
+                    color: item['color'],
+                    onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => DisplayWidgetScreen(title: item['name']))),
+                  );
+                },
               );
-            },
+            }),
           ),
 
           const SizedBox(height: 20),
 
           // Section 3: Input widgets
-          const Padding(
-            padding: EdgeInsets.symmetric(vertical: 8.0),
-            child: Text('Input Widgets', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-          ),
-          GridView.builder(
-            shrinkWrap: true,
-            physics: const NeverScrollableScrollPhysics(),
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 4,
-              crossAxisSpacing: 12,
-              mainAxisSpacing: 12,
-              childAspectRatio: 1.1,
-            ),
-            itemCount: inputWidgets.length,
-            itemBuilder: (context, index) {
-              final item = inputWidgets[index];
-              return LayoutCard(
-                name: item['name'],
-                icon: item['icon'],
-                color: item['color'],
-                onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => InputWidgetScreen(title: item['name']))),
+          SectionCard(
+            title: 'Input Widgets',
+            child: LayoutBuilder(builder: (context, constraints) {
+              final crossAxis = (constraints.maxWidth ~/ 160).clamp(2, 6);
+              return GridView.builder(
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: crossAxis,
+                  crossAxisSpacing: 12,
+                  mainAxisSpacing: 12,
+                  childAspectRatio: 1,
+                ),
+                itemCount: inputWidgets.length,
+                itemBuilder: (context, index) {
+                  final item = inputWidgets[index];
+                  return LayoutCard(
+                    name: item['name'],
+                    icon: item['icon'],
+                    color: item['color'],
+                    onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => InputWidgetScreen(title: item['name']))),
+                  );
+                },
               );
-            },
+            }),
           ),
         ],
+        ),
       ),
     );
   }
@@ -194,24 +221,63 @@ class LayoutCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      elevation: 4,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+      elevation: 6,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+      margin: const EdgeInsets.all(4),
       child: InkWell(
         onTap: onTap ?? () {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(content: Text('Exploring $name...')),
           );
         },
-        borderRadius: BorderRadius.circular(15),
+        borderRadius: BorderRadius.circular(12),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 12.0, horizontal: 8.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              CircleAvatar(
+                radius: 28,
+                backgroundColor: color.withOpacity(0.15),
+                child: Icon(icon, size: 28, color: color),
+              ),
+              const SizedBox(height: 12),
+              Text(
+                name,
+                textAlign: TextAlign.center,
+                style: TextStyle(fontWeight: FontWeight.w600, fontSize: 14, color: Colors.grey[800]),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+// Small reusable section card
+class SectionCard extends StatelessWidget {
+  final String title;
+  final Widget child;
+  const SectionCard({super.key, required this.title, required this.child});
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      margin: const EdgeInsets.symmetric(vertical: 10.0),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+      elevation: 2,
+      child: Padding(
+        padding: const EdgeInsets.all(12.0),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Icon(icon, size: 40, color: color),
-            const SizedBox(height: 10),
-            Text(
-              name,
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: color),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 6.0, vertical: 4.0),
+              child: Text(title, style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
             ),
+            const SizedBox(height: 8),
+            child,
           ],
         ),
       ),

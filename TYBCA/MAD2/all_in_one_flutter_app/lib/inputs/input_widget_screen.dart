@@ -152,8 +152,31 @@ class _InputWidgetScreenState extends State<InputWidgetScreen> {
     }
 
     return Scaffold(
-      appBar: AppBar(title: Text(widget.title)),
-      body: body,
+      extendBodyBehindAppBar: true,
+      backgroundColor: Colors.transparent,
+      appBar: AppBar(
+        title: Text(widget.title,style: TextStyle(color: Colors.white)),
+        backgroundColor: Colors.lightBlue[700],
+        elevation: 0,
+        // centerTitle: true,
+      ),
+      body: SizedBox.expand(
+        child: Container(
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(begin: Alignment.topLeft, end: Alignment.bottomRight, colors: [Color.fromARGB(255,154,207,250), Color(0xFF42A5F5)]),
+          ),
+          child: Padding(
+            padding: const EdgeInsets.fromLTRB(12, 100, 12, 12),
+            child: SingleChildScrollView(
+              child: Card(
+                elevation: 4,
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                child: Padding(padding: const EdgeInsets.all(12.0), child: body),
+              ),
+            ),
+          ),
+        ),
+      ),
     );
   }
 }
