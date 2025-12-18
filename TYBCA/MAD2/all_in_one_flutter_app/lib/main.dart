@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'layout/container_screen.dart';
+import 'layout/list_view_screen.dart';
+import 'layout/row_column_screen.dart';
+import 'layout/stack_screen.dart';
+import 'layout/grid_view_screen.dart';
 
 void main() {
   runApp(const LayoutGalleryApp());
@@ -120,105 +125,6 @@ class LayoutCard extends StatelessWidget {
             ),
           ],
         ),
-      ),
-    );
-  }
-}
-
-// Destination pages -------------------------------------------------------
-class ContainerScreen extends StatelessWidget {
-  const ContainerScreen({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text('Container Example')),
-      body: Center(
-        child: Container(
-          width: 200,
-          height: 200,
-          decoration: BoxDecoration(color: Colors.blueAccent, borderRadius: BorderRadius.circular(16)),
-          child: const Center(child: Text('Container', style: TextStyle(color: Colors.white, fontSize: 18))),
-        ),
-      ),
-    );
-  }
-}
-
-class RowColumnScreen extends StatelessWidget {
-  const RowColumnScreen({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text('Row & Column Example')),
-      body: Padding(
-        padding: const EdgeInsets.all(24.0),
-        child: Column(
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: const [Icon(Icons.star), Icon(Icons.favorite), Icon(Icons.thumb_up)],
-            ),
-            const SizedBox(height: 24),
-            const Text('A Column with a Row above', style: TextStyle(fontSize: 16)),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class StackScreen extends StatelessWidget {
-  const StackScreen({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text('Stack Example')),
-      body: Center(
-        child: Stack(
-          alignment: Alignment.center,
-          children: [
-            Container(width: 220, height: 220, color: Colors.purple.shade100),
-            Container(width: 160, height: 160, color: Colors.purple.shade300),
-            const Text('Stack', style: TextStyle(fontSize: 18, color: Colors.white)),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class ListViewScreen extends StatelessWidget {
-  const ListViewScreen({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text('ListView Example')),
-      body: ListView.builder(
-        padding: const EdgeInsets.all(12),
-        itemCount: 20,
-        itemBuilder: (context, i) => Card(margin: const EdgeInsets.symmetric(vertical: 6), child: ListTile(title: Text('Item #${i + 1}'))),
-      ),
-    );
-  }
-}
-
-class GridViewScreen extends StatelessWidget {
-  const GridViewScreen({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text('GridView Example')),
-      body: GridView.count(
-        crossAxisCount: 3,
-        padding: const EdgeInsets.all(12),
-        crossAxisSpacing: 8,
-        mainAxisSpacing: 8,
-        children: List.generate(12, (i) => Container(color: Colors.green.shade200, child: Center(child: Text('${i + 1}')))),
       ),
     );
   }
