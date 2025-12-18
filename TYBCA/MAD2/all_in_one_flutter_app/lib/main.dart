@@ -4,8 +4,8 @@ import 'layout/list_view_screen.dart';
 import 'layout/row_column_screen.dart';
 import 'layout/stack_screen.dart';
 import 'layout/grid_view_screen.dart';
-import 'layout/display_widget_screen.dart';
-import 'layout/input_widget_screen.dart';
+import 'display/display_widget_screen.dart';
+import 'inputs/input_widget_screen.dart';
 
 void main() {
   runApp(const LayoutGalleryApp());
@@ -47,10 +47,17 @@ class LayoutGridScreen extends StatelessWidget {
   // Input widgets group
   final List<Map<String, dynamic>> inputWidgets = const [
     {'name': 'TextField', 'icon': Icons.input, 'color': Colors.indigo},
+    {'name': 'Password', 'icon': Icons.lock, 'color': Colors.indigo},
+    {'name': 'Multiline', 'icon': Icons.notes, 'color': Colors.indigo},
     {'name': 'Checkbox', 'icon': Icons.check_box, 'color': Colors.teal},
     {'name': 'Switch', 'icon': Icons.toggle_on, 'color': Colors.orange},
     {'name': 'Slider', 'icon': Icons.tune, 'color': Colors.purple},
-    {'name': 'Button', 'icon': Icons.touch_app, 'color': Colors.blueGrey},
+    {'name': 'RangeSlider', 'icon': Icons.linear_scale, 'color': Colors.purple},
+    {'name': 'ElevatedButton', 'icon': Icons.crop_square, 'color': Colors.blueGrey},
+    {'name': 'TextButton', 'icon': Icons.text_snippet, 'color': Colors.blueGrey},
+    {'name': 'OutlinedButton', 'icon': Icons.border_all, 'color': Colors.blueGrey},
+    {'name': 'IconButton', 'icon': Icons.touch_app, 'color': Colors.blueGrey},
+    {'name': 'ToggleButtons', 'icon': Icons.toggle_off, 'color': Colors.blueGrey},
   ];
 
   @override
