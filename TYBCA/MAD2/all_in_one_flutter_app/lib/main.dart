@@ -4,6 +4,8 @@ import 'layout/list_view_screen.dart';
 import 'layout/row_column_screen.dart';
 import 'layout/stack_screen.dart';
 import 'layout/grid_view_screen.dart';
+import 'layout/display_widget_screen.dart';
+import 'layout/input_widget_screen.dart';
 
 void main() {
   runApp(const LayoutGalleryApp());
@@ -34,6 +36,23 @@ class LayoutGridScreen extends StatelessWidget {
     {'name': 'GridView', 'icon': Icons.grid_on, 'color': Colors.green},
   ];
 
+  // Display widgets group
+  final List<Map<String, dynamic>> displayWidgets = const [
+    {'name': 'Text', 'icon': Icons.text_fields, 'color': Colors.teal},
+    {'name': 'Image', 'icon': Icons.image, 'color': Colors.orange},
+    {'name': 'Icon', 'icon': Icons.emoji_emotions, 'color': Colors.pink},
+    {'name': 'Card', 'icon': Icons.credit_card, 'color': Colors.brown},
+  ];
+
+  // Input widgets group
+  final List<Map<String, dynamic>> inputWidgets = const [
+    {'name': 'TextField', 'icon': Icons.input, 'color': Colors.indigo},
+    {'name': 'Checkbox', 'icon': Icons.check_box, 'color': Colors.teal},
+    {'name': 'Switch', 'icon': Icons.toggle_on, 'color': Colors.orange},
+    {'name': 'Slider', 'icon': Icons.tune, 'color': Colors.purple},
+    {'name': 'Button', 'icon': Icons.touch_app, 'color': Colors.blueGrey},
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,48 +60,111 @@ class LayoutGridScreen extends StatelessWidget {
         title: const Text('Flutter'),
         centerTitle: true,
       ),
-      body: Padding(
+      body: ListView(
         padding: const EdgeInsets.all(12.0),
-        child: GridView.builder(
-          // Define the grid structure
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 4, // 4 columns
-            crossAxisSpacing: 12,
-            mainAxisSpacing: 12,
-            childAspectRatio: 1.1, // Adjusts height/width ratio
+        children: [
+          // Section 1: Layouts
+          const Padding(
+            padding: EdgeInsets.symmetric(vertical: 8.0),
+            child: Text('Layouts', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
           ),
-          itemCount: layouts.length,
-          itemBuilder: (context, index) {
-            final layout = layouts[index];
-            return LayoutCard(
-              name: layout['name'],
-              icon: layout['icon'],
-              color: layout['color'],
-              onTap: () {
-                // Navigate to different page depending on the index (or name)
-                switch (index) {
-                  case 0:
-                    Navigator.push(context, MaterialPageRoute(builder: (_) => const ContainerScreen()));
-                    break;
-                  case 1:
-                    Navigator.push(context, MaterialPageRoute(builder: (_) => const RowColumnScreen()));
-                    break;
-                  case 2:
-                    Navigator.push(context, MaterialPageRoute(builder: (_) => const StackScreen()));
-                    break;
-                  case 3:
-                    Navigator.push(context, MaterialPageRoute(builder: (_) => const ListViewScreen()));
-                    break;
-                  case 4:
-                    Navigator.push(context, MaterialPageRoute(builder: (_) => const GridViewScreen()));
-                    break;
-                  default:
-                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Unknown: ${layout['name']}')));
-                }
-              },
-            );
-          },
-        ),
+          GridView.builder(
+            shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 4,
+              crossAxisSpacing: 12,
+              mainAxisSpacing: 12,
+              childAspectRatio: 1.1,
+            ),
+            itemCount: layouts.length,
+            itemBuilder: (context, index) {
+              final layout = layouts[index];
+              return LayoutCard(
+                name: layout['name'],
+                icon: layout['icon'],
+                color: layout['color'],
+                onTap: () {
+                  switch (index) {
+                    case 0:
+                      Navigator.push(context, MaterialPageRoute(builder: (_) => const ContainerScreen()));
+                      break;
+                    case 1:
+                      Navigator.push(context, MaterialPageRoute(builder: (_) => const RowColumnScreen()));
+                      break;
+                    case 2:
+                      Navigator.push(context, MaterialPageRoute(builder: (_) => const StackScreen()));
+                      break;
+                    case 3:
+                      Navigator.push(context, MaterialPageRoute(builder: (_) => const ListViewScreen()));
+                      break;
+                    case 4:
+                      Navigator.push(context, MaterialPageRoute(builder: (_) => const GridViewScreen()));
+                      break;
+                    default:
+                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Unknown: ${layout['name']}')));
+                  }
+                },
+              );
+            },
+          ),
+
+          const SizedBox(height: 20),
+
+          // Section 2: Display widgets
+          const Padding(
+            padding: EdgeInsets.symmetric(vertical: 8.0),
+            child: Text('Display Widgets', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+          ),
+          GridView.builder(
+            shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 4,
+              crossAxisSpacing: 12,
+              mainAxisSpacing: 12,
+              childAspectRatio: 1.1,
+            ),
+            itemCount: displayWidgets.length,
+            itemBuilder: (context, index) {
+              final item = displayWidgets[index];
+              return LayoutCard(
+                name: item['name'],
+                icon: item['icon'],
+                color: item['color'],
+                onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => DisplayWidgetScreen(title: item['name']))),
+              );
+            },
+          ),
+
+          const SizedBox(height: 20),
+
+          // Section 3: Input widgets
+          const Padding(
+            padding: EdgeInsets.symmetric(vertical: 8.0),
+            child: Text('Input Widgets', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+          ),
+          GridView.builder(
+            shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 4,
+              crossAxisSpacing: 12,
+              mainAxisSpacing: 12,
+              childAspectRatio: 1.1,
+            ),
+            itemCount: inputWidgets.length,
+            itemBuilder: (context, index) {
+              final item = inputWidgets[index];
+              return LayoutCard(
+                name: item['name'],
+                icon: item['icon'],
+                color: item['color'],
+                onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => InputWidgetScreen(title: item['name']))),
+              );
+            },
+          ),
+        ],
       ),
     );
   }
