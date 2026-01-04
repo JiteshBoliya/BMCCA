@@ -48,7 +48,7 @@ class AppFooter extends StatelessWidget {
                   launchURL('https://www.linkedin.com/in/jiteshboliya/');
                 },
                 icon: const Image(
-                  image: AssetImage('../assets/icon/linkedin.png'),
+                  image: AssetImage('assets/icon/linkedin.png'),
                   height: 24,
                   width: 24,
                 ),
@@ -58,7 +58,7 @@ class AppFooter extends StatelessWidget {
                   launchURL('https://github.com/JiteshBoliya');
                 },
                 icon: const Image(
-                  image: AssetImage('../assets/icon/github.png'),
+                  image: AssetImage('assets/icon/github.png'),
                   height: 24,
                   width: 24,
                 ),
@@ -68,7 +68,7 @@ class AppFooter extends StatelessWidget {
                   launchURL('https://www.instagram.com/jitesh_boliya_');
                 },
                 icon: const Image(
-                  image: AssetImage('../assets/icon/instagram.png'),
+                  image: AssetImage('assets/icon/instagram.png'),
                   height: 24,
                   width: 24,
                 ),

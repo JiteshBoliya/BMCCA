@@ -13,14 +13,14 @@ class _GalleryScreenState extends State<GalleryScreen> {
   bool _gridMode = true;
 
   final List<ImageItem> _images = const [
-    ImageItem(name: 'img 1', source: '../assets/gallery/img1.jpeg', modifiedDate: '2025-12-01', size: '120 KB', type: 'JPEG'),
-    ImageItem(name: 'img 2', source: '../assets/gallery/img2.jpeg', modifiedDate: '2025-11-20', size: '110 KB', type: 'JPEG'),
-    ImageItem(name: 'img 3', source: '../assets/gallery/img3.jpg', modifiedDate: '2025-10-15', size: '130 KB', type: 'JPG'),
-    ImageItem(name: 'img 4', source: '../assets/gallery/img4.jpg', modifiedDate: '2025-09-09', size: '98 KB', type: 'JPG'),
-    ImageItem(name: 'img 5', source: '../assets/gallery/img5.jpg', modifiedDate: '2025-08-21', size: '145 KB', type: 'JPG'),
-    ImageItem(name: 'img 6', source: '../assets/gallery/img6.jpg', modifiedDate: '2025-07-30', size: '101 KB', type: 'JPG'),
-    ImageItem(name: 'img 7', source: '../assets/gallery/img7.jpg', modifiedDate: '2025-06-15', size: '115 KB', type: 'JPG'),
-    ImageItem(name: 'img 8', source: '../assets/gallery/img8.png', modifiedDate: '2025-06-15', size: '115 KB', type: 'PNG'),
+    ImageItem(name: 'img 1', source: 'assets/gallery/img1.jpeg', modifiedDate: '2025-12-01', size: '120 KB', type: 'JPEG'),
+    ImageItem(name: 'img 2', source: 'assets/gallery/img2.jpeg', modifiedDate: '2025-11-20', size: '110 KB', type: 'JPEG'),
+    ImageItem(name: 'img 3', source: 'assets/gallery/img3.jpg', modifiedDate: '2025-10-15', size: '130 KB', type: 'JPG'),
+    ImageItem(name: 'img 4', source: 'assets/gallery/img4.jpg', modifiedDate: '2025-09-09', size: '98 KB', type: 'JPG'),
+    ImageItem(name: 'img 5', source: 'assets/gallery/img5.jpg', modifiedDate: '2025-08-21', size: '145 KB', type: 'JPG'),
+    ImageItem(name: 'img 6', source: 'assets/gallery/img6.jpg', modifiedDate: '2025-07-30', size: '101 KB', type: 'JPG'),
+    ImageItem(name: 'img 7', source: 'assets/gallery/img7.jpg', modifiedDate: '2025-06-15', size: '115 KB', type: 'JPG'),
+    ImageItem(name: 'img 8', source: 'assets/gallery/img8.png', modifiedDate: '2025-06-15', size: '115 KB', type: 'PNG'),
   ];
 
   @override

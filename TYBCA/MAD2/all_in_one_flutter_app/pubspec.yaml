@@ -19,7 +19,9 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
-    - assets/images/shinchan.png
+    - assets/images/
+    - assets/icon/
+    - assets/gallery/
   fonts:
     - family: Pacifico
       fonts:
