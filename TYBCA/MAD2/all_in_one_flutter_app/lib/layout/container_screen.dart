@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../widgets/info_settings_actions.dart';
 
 class ContainerScreen extends StatefulWidget {
   const ContainerScreen({super.key});
@@ -169,7 +168,11 @@ class _ContainerScreenState extends State<ContainerScreen> {
       appBar: AppBar(
         title: const Text('Container Example', style: TextStyle(color: Colors.white)),
         actions: [
-          InfoSettingsActions(onInfo: _showInfo, onSettings: _openSettings),
+          IconButton(icon: const Icon(Icons.info_outline, color: Colors.white), onPressed: _showInfo),
+          IconButton(
+            icon: const Icon(Icons.settings, color: Colors.white),
+            onPressed: _openSettings,
+          ),
         ],
         backgroundColor: Colors.lightBlue[700],
         elevation: 0,

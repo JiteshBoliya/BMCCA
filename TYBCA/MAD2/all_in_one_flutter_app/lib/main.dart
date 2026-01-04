@@ -1,3 +1,4 @@
+import 'problems/collegeAdmissionForm.dart';
 import 'package:flutter/material.dart';
 import 'layout/container_screen.dart';
 import 'layout/list_view_screen.dart';
@@ -6,30 +7,44 @@ import 'layout/stack_screen.dart';
 import 'layout/grid_view_screen.dart';
 import 'display/display_widget_screen.dart';
 import 'inputs/input_widget_screen.dart';
+import 'problems/product_listing.dart';
+import 'problems/travel_detail.dart';
+import 'contacts/contact_list_screen.dart';
+import 'gallery/gallery_screen.dart';
 
 void main() {
   runApp(const LayoutGalleryApp());
 }
 
-class LayoutGalleryApp extends StatelessWidget {
+class LayoutGalleryApp extends StatefulWidget {
   const LayoutGalleryApp({super.key});
+
+  @override
+  State<LayoutGalleryApp> createState() => _LayoutGalleryAppState();
+}
+
+class _LayoutGalleryAppState extends State<LayoutGalleryApp> {
+  Color _seedColor = Colors.blue;
+
+  void _updateTheme(Color c) => setState(() => _seedColor = c);
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        colorScheme: ColorScheme.fromSeed(seedColor: _seedColor),
         useMaterial3: true,
         fontFamily: 'Pacifico',
       ),
-      home: const LayoutGridScreen(),
+      home: LayoutGridScreen(onThemeChanged: _updateTheme),
     );
   }
 }
 
 class LayoutGridScreen extends StatelessWidget {
-  const LayoutGridScreen({super.key});
+  final ValueChanged<Color>? onThemeChanged;
+  const LayoutGridScreen({super.key, this.onThemeChanged});
 
   // List of layout types to display
   final List<Map<String, dynamic>> layouts = const [
@@ -60,6 +75,15 @@ class LayoutGridScreen extends StatelessWidget {
     {'name': 'Button', 'icon': Icons.touch_app, 'color': Colors.blueGrey},
   ];
 
+  // Problem sheet section (placeholder items)
+  final List<Map<String, dynamic>> problems = const [
+    {'name': 'College Admission Form', 'icon': Icons.school, 'color': Colors.indigo},
+    {'name': 'Product List', 'icon': Icons.shopping_bag, 'color': Colors.teal},
+    {'name': 'Travel Destination Detail', 'icon': Icons.place, 'color': Colors.orange},
+    {'name': 'Contact Management', 'icon': Icons.contacts, 'color': Colors.green},
+    {'name': 'Gallery Application', 'icon': Icons.photo_library, 'color': Colors.pink},
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -70,6 +94,21 @@ class LayoutGridScreen extends StatelessWidget {
           child: FlutterLogo(),
         ),
         title: const Text('Flutter', style: TextStyle(color: Colors.white)),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.settings, color: Colors.white),
+            onPressed: () {
+              final colors = [Colors.blue, Colors.indigo, Colors.teal, Colors.deepOrange, Colors.purple, Colors.green, Colors.pink];
+              showModalBottomSheet(
+                context: context,
+                builder: (context) => Padding(
+                  padding: const EdgeInsets.all(12.0),
+                  child: Wrap(spacing: 12, children: colors.map((c) => GestureDetector(onTap: () { Navigator.of(context).pop(); onThemeChanged?.call(c); }, child: CircleAvatar(backgroundColor: c, radius: 22))).toList()),
+                ),
+              );
+            },
+          )
+        ],
         // centerTitle: true,
         elevation: 10,
         backgroundColor: Colors.lightBlue[700],
@@ -188,6 +227,45 @@ class LayoutGridScreen extends StatelessWidget {
                     icon: item['icon'],
                     color: item['color'],
                     onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => InputWidgetScreen(title: item['name']))),
+                  );
+                },
+              );
+            }),
+          ),
+          const SizedBox(height: 20),
+
+          // Section 4: Problem Sheet 1
+          SectionCard(
+            title: 'Problem Sheet 1',
+            child: LayoutBuilder(builder: (context, constraints) {
+              final crossAxis = (constraints.maxWidth ~/ 160).clamp(2, 6);
+              return GridView.builder(
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: crossAxis,
+                  crossAxisSpacing: 12,
+                  mainAxisSpacing: 12,
+                  childAspectRatio: 1,
+                ),
+                itemCount: problems.length,
+                itemBuilder: (context, index) {
+                  final item = problems[index];
+                  return LayoutCard(
+                    name: item['name'],
+                    icon: item['icon'],
+                    color: item['color'],
+                    onTap: index == 0
+                      ? () => Navigator.push(context, MaterialPageRoute(builder: (_) => const ProblemSheet1Screen()))
+                      : index == 1
+                        ? () => Navigator.push(context, MaterialPageRoute(builder: (_) => const ProductListingScreen()))
+                        : index == 2
+                          ? () => Navigator.push(context, MaterialPageRoute(builder: (_) => const TravelDetailScreen()))
+                          : index == 3
+                            ? () => Navigator.push(context, MaterialPageRoute(builder: (_) => const ContactListScreen()))
+                            : index == 4
+                              ? () => Navigator.push(context, MaterialPageRoute(builder: (_) => const GalleryScreen()))
+                              : null,
                   );
                 },
               );
