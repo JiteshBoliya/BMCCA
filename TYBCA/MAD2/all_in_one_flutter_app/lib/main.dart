@@ -57,11 +57,7 @@ class LayoutGridScreen extends StatelessWidget {
     {'name': 'Switch', 'icon': Icons.toggle_on, 'color': Colors.orange},
     {'name': 'Slider', 'icon': Icons.tune, 'color': Colors.purple},
     {'name': 'RangeSlider', 'icon': Icons.linear_scale, 'color': Colors.purple},
-    {'name': 'ElevatedButton', 'icon': Icons.crop_square, 'color': Colors.blueGrey},
-    {'name': 'TextButton', 'icon': Icons.text_snippet, 'color': Colors.blueGrey},
-    {'name': 'OutlinedButton', 'icon': Icons.border_all, 'color': Colors.blueGrey},
-    {'name': 'IconButton', 'icon': Icons.touch_app, 'color': Colors.blueGrey},
-    {'name': 'ToggleButtons', 'icon': Icons.toggle_off, 'color': Colors.blueGrey},
+    {'name': 'Button', 'icon': Icons.touch_app, 'color': Colors.blueGrey},
   ];
 
   @override
