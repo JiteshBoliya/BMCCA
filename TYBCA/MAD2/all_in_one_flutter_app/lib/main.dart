@@ -11,6 +11,7 @@ import 'problems/product_listing.dart';
 import 'problems/travel_detail.dart';
 import 'contacts/contact_list_screen.dart';
 import 'gallery/gallery_screen.dart';
+import 'widgets/app_footer.dart';
 
 void main() {
   runApp(const LayoutGalleryApp());
@@ -119,7 +120,7 @@ class LayoutGridScreen extends StatelessWidget {
           gradient: LinearGradient(
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
-            colors: [Color.fromARGB(255, 154, 207, 250), Color(0xFF42A5F5)],
+            colors: [Color.fromARGB(255, 154, 207, 250), Color.fromARGB(255, 0, 107, 194)],
           ),
         ),
         child: ListView(
@@ -174,7 +175,7 @@ class LayoutGridScreen extends StatelessWidget {
           ),
 
           const SizedBox(height: 20),
-
+          
           // Section 2: Display widgets
           SectionCard(
             title: 'Display Widgets',
@@ -271,6 +272,9 @@ class LayoutGridScreen extends StatelessWidget {
               );
             }),
           ),
+          const SizedBox(height: 18),
+          const Divider(),
+          const AppFooter(),
         ],
         ),
       ),
