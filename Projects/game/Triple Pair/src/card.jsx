@@ -1,4 +1,6 @@
 export default function Card({ card, onClick }) {
+  if (!card) return null;
+
   const isRed = card.suit === "♥" || card.suit === "♦";
 
   return (

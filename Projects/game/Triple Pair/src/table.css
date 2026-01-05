@@ -58,16 +58,66 @@
   gap: 30px;
 }
 
-.deck,
-.discard {
-  width: 80px;
-  height: 120px;
-  background: #1e293b;
+/* Deck */
+.deck-area {
+  cursor: pointer;
+  text-align: center;
+  color: white;
+}
+
+.deck-back {
+  width: 90px;
+  height: 130px;
+  background: repeating-linear-gradient(
+    45deg,
+    #1e293b,
+    #1e293b 10px,
+    #334155 10px,
+    #334155 20px
+  );
   border-radius: 10px;
   border: 2px solid white;
+}
+
+/* Discard */
+.discard-area {
+  width: 90px;
+  height: 130px;
+  cursor: pointer;
+  text-align: center;
   color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+}
+
+/* Card */
+.card {
+  width: 90px;
+  height: 130px;
+  background: white;
+  border-radius: 10px;
+  border: 2px solid black;
+  position: relative;
+}
+
+.card.red { color: #dc2626; }
+.card.black { color: #111827; }
+
+.corner {
+  position: absolute;
+  font-size: 14px;
   font-weight: bold;
+}
+
+.corner.top { top: 0px; left: 10px; }
+.corner.bottom {
+  bottom: 0px;
+  right: -20px;
+  transform: rotate(180deg);
+}
+
+.center-suit {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 36px;
 }

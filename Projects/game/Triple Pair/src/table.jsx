@@ -1,7 +1,10 @@
+import { useState } from "react";
+import { createDeck } from "./gameLogic";
+import Card from "./card.jsx";
 import "./table.css";
 
 export default function Table() {
-  const seats = [
+     const seats = [
     "Player 1",
     "Player 2",
     "Player 3",
@@ -11,6 +14,19 @@ export default function Table() {
     "Player 7",
     "Player 8",
   ];
+
+  const [deck, setDeck] = useState(()=> createDeck());
+  const [discard, setDiscard] = useState([]);
+
+  const drawCard = () => {
+    if (deck.length === 0) return;
+
+    const newDeck = [...deck];
+    const card = newDeck.pop();
+
+    setDeck(newDeck);
+    setDiscard([...discard, card]);
+  };
 
   return (
     <div className="table-wrapper">
@@ -42,8 +58,22 @@ export default function Table() {
 
         {/* Center */}
         <div className="center-area">
-          <div className="deck">Deck</div>
-          <div className="discard">Discard</div>
+
+          {/* Deck */}
+          <div className="deck-area" onClick={drawCard}>
+            <div className="deck-back"></div>
+            <span>Deck</span>
+          </div>
+
+          {/* Discard */}
+          <div className="discard-area">
+            {discard.length > 0 && (
+              <Card card={discard[discard.length - 1]} />
+            )}
+            <span>Discard</span>
+          </div>
+        
+
         </div>
 
       </div>
