@@ -1,0 +1,93 @@
+body {
+  margin: 0;
+  background: radial-gradient(#14532d, #052e16);
+  color: white;
+  font-family: Arial, sans-serif;
+}
+
+.center {
+  text-align: center;
+  margin-top: 120px;
+}
+
+button {
+  padding: 10px 16px;
+  margin: 10px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.game {
+  padding: 20px;
+  text-align: center;
+}
+
+.table {
+  display: flex;
+  justify-content: center;
+  gap: 60px;
+  margin: 20px 0;
+}
+
+.stack {
+  width: 90px;
+  height: 130px;
+  border-radius: 10px;
+  background: repeating-linear-gradient(
+    45deg,
+    #1e293b,
+    #1e293b 10px,
+    #334155 10px,
+    #334155 20px
+  );
+  border: 2px solid white;
+  cursor: pointer;
+}
+
+.hand {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* CARD */
+.card {
+  width: 90px;
+  height: 130px;
+  background: white;
+  border-radius: 10px;
+  border: 2px solid black;
+  margin: 8px;
+  position: relative;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.6);
+  cursor: pointer;
+}
+
+.card.red { color: #dc2626; }
+.card.black { color: #111827; }
+
+.corner {
+  position: absolute;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.corner.top {
+  top: 6px;
+  left: 6px;
+}
+
+.corner.bottom {
+  bottom: 6px;
+  right: 6px;
+  transform: rotate(180deg);
+}
+
+.center-suit {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 36px;
+}
