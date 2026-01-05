@@ -91,3 +91,22 @@ button {
   transform: translate(-50%, -50%);
   font-size: 36px;
 }
+
+.card--small {
+  transform: scale(0.6);
+  transform-origin: center;
+}
+
+
+.count {
+  font-size: 12px;
+  margin-top: 4px;
+  color: #facc15;
+}
+
+.start-btn {
+  margin-top: 20px;
+  padding: 10px 18px;
+  font-size: 16px;
+}
+
